@@ -1,4 +1,4 @@
-console.time('Execution Time -> ')
+console.time('Total Algorithm Execution Time -> ');
 let array_test = [], total = 0;
 // Cria um alias para a função de interface com o usuário
 const readline = require("readline");
@@ -10,16 +10,21 @@ function create_array_size(size) {
     for (let i = 0; i < size; i++) {
       array_test.push(i);
     }
-    resolve(await sum_elements_array(array_test));
+    resolve(await sum_elements_array(array_test, size));
   });
 };
 
 // A função sum_elements_array recebe como parâmetro um array de numeros
-function sum_elements_array(array) {
+function sum_elements_array(array, size) {
   return new Promise(resolve => {
+    // Alterações feitas para calcular somente o tempo gasto para finalizar o loop de X elementos
+    // Com isso, podemos medir o tempo gasto para execução do loop e demostrar a complexidade
+    // do algoritmo com base no tamanho definido pelo usuário
+    console.time(size + ' element loop execution time -> ');
     array.forEach(element => {
       total += element;
     });
+    console.timeEnd(size + ' element loop execution time -> ');
     resolve(total);
   });
 };
@@ -50,6 +55,6 @@ interface_prompt.question('What is the size of the array to be measured?\n', asy
 // Encerra a interface de usuário após o calculo
 interface_prompt.on("close", () => {
   // Informa para o uduário o tempo de execução do algoritmo
-  console.timeEnd('Execution Time -> ');
+  console.timeEnd('Total Algorithm Execution Time -> ');
   process.exit(0);
 });
