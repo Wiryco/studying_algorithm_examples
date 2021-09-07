@@ -1,6 +1,6 @@
 // Desenvolvido por Vinícius Andrade Lopes
 console.time('Tempo total de execução do algoritmo -> ');
-let matriz = [], total = 0;
+let vetor = [], total = 0;
 // Cria um alias para a função de interface com o usuário
 const readline = require("readline");
 
@@ -8,10 +8,10 @@ const readline = require("readline");
 // OBS: O primeiro numero do array sempre será 0
 function create_array_size(size) {
   return new Promise(async resolve => {
-    for (let i = 0; i < size; i++) {
-      matriz.push(i);
+    for (let i = 0; i < size; i++) { // O(n)
+      vetor.push(i); // O(1)
     }
-    resolve(await sum_elements_array(matriz, size));
+    resolve(await sum_elements_array(vetor, size));
   });
 };
 

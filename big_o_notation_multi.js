@@ -8,8 +8,8 @@ const readline = require("readline");
 // OBS: O primeiro numero do array sempre será 0
 function create_array_size(size, model) {
   return new Promise(async resolve => {
-    for (let i = 0; i < size; i++) {
-      vetor.push(i);
+    for (let i = 0; i < size; i++) { // O(n)
+      vetor.push(i); // O(1)
     }
     if (model == 'S')
       resolve(await sum_elements_array(vetor, size));
@@ -26,8 +26,8 @@ function sum_elements_array(array, size) {
     // do algoritmo com base no tamanho definido pelo usuário;
     // Retorna a soma de todos os elementos do array
     console.time('\nTempo de execução do vetor de ' + size + ' elemento(s) => ');
-    array.forEach(element => {
-      total += element;
+    array.forEach(element => { // O(n)
+      total += element; // O(1)
     });
     console.timeEnd('\nTempo de execução do vetor de ' + size + ' elemento(s) => ');
     resolve(total);
@@ -39,7 +39,7 @@ function return_one_element(array, size) {
   return new Promise(resolve => {
     // Não realiza calculo
     console.time('\nTempo de execução do vetor de ' + size + ' elemento(s) ** NÃO FEZ CALCULO ** => ');
-    array.forEach(element => {
+    array.forEach(element => { // O(n)
     });
     console.timeEnd('\nTempo de execução do vetor de ' + size + ' elemento(s) ** NÃO FEZ CALCULO ** => ');
     resolve(total);

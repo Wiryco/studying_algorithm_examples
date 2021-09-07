@@ -9,15 +9,16 @@ let caracter = '', count = 0;
 
 function firstNonRepeatingCaractere(str) {
   return new Promise(resolve => {
-    for (let i = 0; i < str.length; i++) {
-      for (let j = 0; j < str.length; j++) {
+    // O(n²)
+    for (let i = 0; i < str.length; i++) { // O(n)
+      for (let j = 0; j < str.length; j++) { // O(n)
         if (str.substr(i, 1) == str.substr(j, 1))
-          count += 1;
+          count += 1; // O(1)
       }
 
       if (count == 1) {
         caracter = str.substr(i, 1);
-        resolve('O caractere ' + caracter + ' é o primeiro a não se repetir');
+        resolve('O caractere _ ' + caracter + ' _ é o primeiro a não se repetir');
       } else {
         count = 0;
       }

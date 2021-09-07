@@ -9,15 +9,16 @@ const readline = require("readline");
 function create_matriz_size(size, dimensions, model) {
   return new Promise(async resolve => {
     if (dimensions != 1) {
-      for (let i = 0; i < dimensions; i++) {
+      // O(n²)
+      for (let i = 0; i < dimensions; i++) { // O(n)
         matriz.push([]);
-        for (let j = 0; j < size; j++) {
-          matriz[i].push(j);
+        for (let j = 0; j < size; j++) { // O(n)
+          matriz[i].push(j); // O(1)
         }
       }
     } else {
-      for (let i = 0; i < size; i++) {
-        matriz.push(i);
+      for (let i = 0; i < size; i++) { // O(n)
+        matriz.push(i); // O(1)
       }
     }
 
@@ -37,13 +38,14 @@ function sum_elements_array(matriz, dimensions, size) {
     // Retorna a soma de todos os elementos do array
     console.time('\nTempo de execução da matriz de ' + dimensions + ' dimensão(ões) e ' + size + ' elemento(s) => ');
     if (dimensions == 1) {
-      matriz.forEach(element => {
-        total += element;
+      matriz.forEach(element => { // O(n)
+        total += element; // O(1)
       });
     } else {
-      matriz.forEach(element => {
-        element.forEach(value => {
-          total += value;
+      // O(n²)
+      matriz.forEach(element => { // O(n)
+        element.forEach(value => { // O(n)
+          total += value; // O(n)
         });
       });
     }
@@ -58,9 +60,9 @@ function return_one_element(array, dimensions, size) {
     // Não realiza calculo
     console.time('Tempo de execução da matriz de ' + dimensions + ' dimensão(ões) e ' + size + ' elemento(s) => ');
     if (dimensions == 1) {
-      array.forEach(element => { });
+      array.forEach(element => { }); // O(n)
     } else {
-      array.forEach(element => { element.forEach(value => { }) });
+      array.forEach(element => { element.forEach(value => { }) }); // O(n²)
     }
     console.log('\n** NÃO FEZ CALCULO **');
     console.timeEnd('Tempo de execução da matriz de ' + dimensions + ' dimensão(ões) e ' + size + ' elemento(s) => ');
