@@ -20,10 +20,15 @@ function adiciona_valor_arvore(_arvore, valor) {
   });
 }
 
+function numeros_aleatorios(maximo) {
+  return Math.floor(Math.random() * maximo + 1); // Retorna numeros aleatórios entre 1 e Maximo
+  //return Math.random(); Retorna numeros aleatórios entre 0 e 1
+}
+
 function preenche_arvore_automatica(tamanho) {
   return new Promise(async resolve => {
     for (let i = 0; i < tamanho; i++) {
-      adiciona_valor_arvore(arvore_principal, i + 1);
+      adiciona_valor_arvore(arvore_principal, numeros_aleatorios(999));
     }
     resolve(arvore_principal);
   });
@@ -75,8 +80,8 @@ interface_prompt.question('Qual o tamanho máximo de numeros na árvore?\n=> ', 
       pergunta = '\nVocê pode optar por um preenchimento automático da arvore de tamanho ' + _tamanho_da_arvore + ' ';
       pergunta += 'ou voce pode preencher a posição manualmente.'
     } else {
-      pergunta = '\nVocê pode optar por um preenchimento automático da arvore de tamanho ' + _tamanho_da_arvore + ' com numeros sequenciais \n';
-      pergunta += '(Valor 1 ao ' + _tamanho_da_arvore + ') ';
+      pergunta = '\nVocê pode optar por um preenchimento automático da arvore de tamanho ' + _tamanho_da_arvore + ' com numeros aleatórios\n';
+      pergunta += '(Números inteiros aleatórios entre 1 e 999) ';
       pergunta += 'ou voce pode preencher todas as ' + _tamanho_da_arvore + ' posições manualmente.';
     }
 
