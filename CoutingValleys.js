@@ -1,5 +1,6 @@
 // Desafio HackerRank
 // Código - Vinícius Andrade Lopes
+// Couting Valleys
 
 function countingValleys(steps, path) {
   // Write your code here

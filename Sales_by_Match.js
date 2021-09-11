@@ -1,5 +1,6 @@
 // Desafio HackerRank
 // Código - Vinícius Andrade Lopes
+// Sales by Match
 
 function sockMerchant(ar) {
     // Write your code here
