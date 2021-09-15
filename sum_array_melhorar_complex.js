@@ -1,6 +1,4 @@
-// Dividir um array em 2 e calcular
-// quantas vezes a soma dos elementos do lado esquerdo foi maior que
-// a soma dos elementos do lado direito
+// NAO DEU CERTO
 console.time('\nTempo total de execução do algoritmo => ');
 const readline = require("readline");
 
@@ -19,23 +17,22 @@ function preenche_array_automatico(tamanho) {
   });
 }
 
-function soma_elementos(array) {
-  return new Promise(async resolve => {
-    let tamanho = array.length, sum_esquerdo = 0, sum_direito = 0, esquerdo_wins = 0, lado_direito, lado_esquerdo = [];
-    array.forEach((esquerdo, idx_e) => {
-      sum_esquerdo += esquerdo;
-      lado_esquerdo.push(esquerdo);
-      if (idx_e + 1 < tamanho) {
-        lado_direito = array.slice(idx_e + 1, tamanho);
-        lado_direito.forEach(element => {
-          sum_direito += element;
-        });
+function main(array) {
+  return new Promise(resolve => {
+    let lado_direito = [], sum_esquerdo = 0, sum_direito = 0, esquerdo_wins = 0;
+    array.forEach(element => {
+      lado_direito.push(element);
+      sum_direito += element;
+    });
 
-        if (sum_esquerdo > sum_direito)
-          esquerdo_wins += 1;
+    array.forEach(element => {
+      counte++;
+      sum_esquerdo += element;
+      let item = lado_direito.shift();
+      sum_direito += item;
 
-        sum_direito = 0
-      }
+      if (sum_esquerdo > sum_direito && lado_direito.length > 0)
+        esquerdo_wins += 1;
     });
     resolve(esquerdo_wins);
   });
@@ -57,9 +54,9 @@ interface_prompt.question('Qual o tamanho máximo do array de inteiros?\n=> ', a
     interface_prompt.close();
   } else {
     let _array = await preenche_array_automatico(_tamanho);
-    console.time('\nTempo total de execução da função com um array de tamanho ' + _tamanho + ' => ');
-    let result = await soma_elementos(_array);
-    console.timeEnd('\nTempo total de execução da função com um array de tamanho ' + _tamanho + ' => ');
+    console.time('\nTempo total de execução da função => ');
+    let result = await main(_array);
+    console.timeEnd('\nTempo total de execução da função => ');
     console.log('\nLado esquedo venceu ', result, ' vezes o lado direito.');
     interface_prompt.close();
   }
