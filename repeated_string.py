@@ -47,3 +47,12 @@ if __name__ == '__main__':
     fptr.write(str(result) + '\n')
 
     fptr.close()
+
+
+
+
+#kmretasscityylpdhuwjirnqimlkcgxubxmsxpypgzxtenweirknjtasxtvxemtwxuarabssvqdnktqadhyktagjxoanknhgilnm
+
+#736778906400
+
+#51574523448
